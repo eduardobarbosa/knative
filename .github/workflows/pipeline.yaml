@@ -1,0 +1,15 @@
+on: [push]
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build image
+      uses: docker://docker.io/buildpacksio/pack:0.29.0
+      with:
+        entryPoint: /bin/sh
+        args: |
+            -c "
+            set -e
+            pack build  --path sample/ --builder paketo-buildpacks/builder:base
+            "
