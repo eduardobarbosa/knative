@@ -8,6 +8,11 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
+    - name: Print current directory
+      run: |
+        ls -la
+        echo "Current directory: $(pwd)"
+
     - name: Build image
       uses: docker://docker.io/buildpacksio/pack:0.29.0
       with:
