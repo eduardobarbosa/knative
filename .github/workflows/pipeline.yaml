@@ -14,6 +14,10 @@ jobs:
         echo "Current directory: $(pwd)"
 
     - name: Build image
-      uses: docker://docker.io/buildpacksio/pack:0.29.0
+      uses: mamezou-tech/buildpacks-action@master
       with:
-        args: build test_build --builder paketo-buildpacks/builder:base
+        image: 'test_build'
+        tag: '1.0.0'
+        path: 'sample/'
+        builder: 'gcr.io/paketo-buildpacks/builder:base'
+        env: 'HELLO=WORLD FOO=BAR BAZ'
