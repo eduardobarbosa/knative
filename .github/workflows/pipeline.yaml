@@ -11,9 +11,9 @@ jobs:
     - name: Build image
       uses: docker://docker.io/buildpacksio/pack:0.29.0
       with:
-        entryPoint: /bin/sh
-        args: |
-            -c "
-            set -e
-            pack build  --path sample/ --builder paketo-buildpacks/builder:base
-            "
+        args:
+          - build
+          - --path
+          - sample
+          - --builder
+          - paketo-buildpacks/builder:base
